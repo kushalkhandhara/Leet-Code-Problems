@@ -3,8 +3,8 @@ public class Problem1748
 {
     public static int sumOfUnique(int[] nums)
     {
-        int sum = 0;
-        int count = 1;
+        // int sum = 0;
+        // int count = 1;
         ArrayList<Integer> unique = new ArrayList<Integer>();
         HashMap<Integer, Integer> map = new HashMap<>();
         Arrays.sort(nums);
