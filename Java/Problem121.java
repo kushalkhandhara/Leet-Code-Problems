@@ -1,44 +1,27 @@
 class Problem121
 {
-    public static int maxProfit(int[] prices) 
+    static int maxProfit(int prices[], int n)
     {
-        int min=Integer.MAX_VALUE;
-        int minInd=0;
-        for(int i=0;i<prices.length;i++)
-        {
-            if(prices[i]<min)
-            {
-                min = prices[i];
-                minInd = i;
-            }
-        }
-        System.out.println("Min Ind : " + minInd);
-        System.out.println("Min  : " + min);
-        int len =prices.length-1;
-        if(minInd==len)
-        {
-            return 0;
-        }
+        int buy = prices[0], max_profit = 0;
+        for (int i = 1; i < n; i++) {
 
-        int max = min;
-        int maxInd =minInd;
-        for(int i=minInd;i<prices.length;i++)
-        {
-            if(prices[i]>max)
-            {
-                max = prices[i];
-                maxInd = i;
-            }
-        }
-        return maxInd+1;
+            // Checking for lower buy value
+            if (buy > prices[i])
+                buy = prices[i];
 
+            // Checking for higher profit
+            else if (prices[i] - buy > max_profit)
+                max_profit = prices[i] - buy;
+        }
+        return max_profit;
     }
 
-    public static void main(String[] args)
+    // Driver Code
+    public static void main(String args[])
     {
-        int arr[]= {7,6,4,3,1};
-        int res = maxProfit(arr);
-        System.out.println(res);
-
+        int prices[] = { 7, 1, 5, 6, 4 };
+        int n = prices.length;
+        int max_profit = maxProfit(prices, n);
+        System.out.println(max_profit);
     }
 }
